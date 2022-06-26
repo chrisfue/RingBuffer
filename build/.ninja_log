@@ -1,13 +1,13 @@
 # ninja log v5
-0	51	1656062921567667923	/home/christoph/Documents/SYSPROG/RingBuffer/build/CMakeFiles/cmake.verify_globs	8437d2d9b191c60d
+0	92	0	/home/christoph/Documents/SYSPROG/RingBuffer/build/CMakeFiles/cmake.verify_globs	8437d2d9b191c60d
 0	77	1654946599571191222	CMakeFiles/receiver.dir/src/receiver.c.o	13a23fd5b33a48ba
-0	88	1654946599587191273	CMakeFiles/sender.dir/src/sender.c.o	6e1b8d9900ff23a4
-89	142	1654946599639191441	sender	d30766e0705db0bd
-77	128	1654946599623191389	receiver	151803e2e1d8d749
-1	109	0	/home/christoph/Documents/SYSPROG/RingBuffer/build/CMakeFiles/cmake.verify_globs	8437d2d9b191c60d
-7	259	1656062922007672524	../receiver	6436b569922156c4
-0	263	1656062922007672524	../sender	713004c83ff078be
-0	149	0	/home/christoph/Documents/SYSPROG/RingBuffer/build/CMakeFiles/cmake.verify_globs	8437d2d9b191c60d
-0	42	0	/home/christoph/Documents/SYSPROG/RingBuffer/build/CMakeFiles/cmake.verify_globs	8437d2d9b191c60d
 0	198	1656063298235283412	CMakeFiles/sender.dir/src/sender.c.o	6e1b8d9900ff23a4
+89	142	1654946599639191441	sender	d30766e0705db0bd
+0	87	1656069736689608105	CMakeFiles/main.dir/src/main.c.o	620aba7dd1d29980
+77	128	1654946599623191389	receiver	151803e2e1d8d749
+7	259	1656062922007672524	../receiver	6436b569922156c4
+87	194	1656069736785656322	../main	72303ec722fccd72
 198	333	1656063298367284592	../sender	713004c83ff078be
+0	251	0	/home/christoph/Documents/SYSPROG/RingBuffer/build/CMakeFiles/cmake.verify_globs	8437d2d9b191c60d
+0	345	1656070795154264957	CMakeFiles/sender.dir/src/sender.c.o	6e1b8d9900ff23a4
+346	640	1656070795438265074	../sender	713004c83ff078be
