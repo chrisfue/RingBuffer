@@ -16,7 +16,9 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2,
+						3
 					]
 				}
 			],
@@ -32,7 +34,9 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2,
+						3
 					]
 				}
 			],
@@ -40,15 +44,29 @@
 			[
 				{
 					"directoryIndex" : 0,
+					"id" : "functions_library::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-functions_library-Debug-40e9c66946c5dadd54e7.json",
+					"name" : "functions_library",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "receiver::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-receiver-Debug-d22340229d5dc4449416.json",
+					"jsonFile" : "target-receiver-Debug-a82ae3c9a02c430db9bc.json",
 					"name" : "receiver",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
+					"id" : "ringbuffer_library::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ringbuffer_library-Debug-44384948314e315b7291.json",
+					"name" : "ringbuffer_library",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "sender::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-sender-Debug-2742c6848f5f7e5016ba.json",
+					"jsonFile" : "target-sender-Debug-bb044c7fa556e751412c.json",
 					"name" : "sender",
 					"projectIndex" : 0
 				}

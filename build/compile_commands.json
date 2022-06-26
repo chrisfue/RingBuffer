@@ -1,12 +1,32 @@
 [
 {
   "directory": "/home/christoph/Documents/SYSPROG/RingBuffer/build",
+  "command": "/usr/bin/gcc -Dringbuffer_library_EXPORTS -I/home/christoph/Documents/SYSPROG/RingBuffer/include -g -fPIC -o CMakeFiles/ringbuffer_library.dir/src/ringbuffer.c.o -c /home/christoph/Documents/SYSPROG/RingBuffer/src/ringbuffer.c",
+  "file": "/home/christoph/Documents/SYSPROG/RingBuffer/src/ringbuffer.c"
+},
+{
+  "directory": "/home/christoph/Documents/SYSPROG/RingBuffer/build",
   "command": "/usr/bin/gcc -I/home/christoph/Documents/SYSPROG/RingBuffer/include -g -o CMakeFiles/sender.dir/src/sender.c.o -c /home/christoph/Documents/SYSPROG/RingBuffer/src/sender.c",
   "file": "/home/christoph/Documents/SYSPROG/RingBuffer/src/sender.c"
 },
 {
   "directory": "/home/christoph/Documents/SYSPROG/RingBuffer/build",
+  "command": "/usr/bin/gcc -I/home/christoph/Documents/SYSPROG/RingBuffer/include -g -o CMakeFiles/sender.dir/src/ringbuffer.c.o -c /home/christoph/Documents/SYSPROG/RingBuffer/src/ringbuffer.c",
+  "file": "/home/christoph/Documents/SYSPROG/RingBuffer/src/ringbuffer.c"
+},
+{
+  "directory": "/home/christoph/Documents/SYSPROG/RingBuffer/build",
   "command": "/usr/bin/gcc -I/home/christoph/Documents/SYSPROG/RingBuffer/include -g -o CMakeFiles/receiver.dir/src/receiver.c.o -c /home/christoph/Documents/SYSPROG/RingBuffer/src/receiver.c",
   "file": "/home/christoph/Documents/SYSPROG/RingBuffer/src/receiver.c"
+},
+{
+  "directory": "/home/christoph/Documents/SYSPROG/RingBuffer/build",
+  "command": "/usr/bin/gcc -I/home/christoph/Documents/SYSPROG/RingBuffer/include -g -o CMakeFiles/receiver.dir/src/ringbuffer.c.o -c /home/christoph/Documents/SYSPROG/RingBuffer/src/ringbuffer.c",
+  "file": "/home/christoph/Documents/SYSPROG/RingBuffer/src/ringbuffer.c"
+},
+{
+  "directory": "/home/christoph/Documents/SYSPROG/RingBuffer/build",
+  "command": "/usr/bin/gcc -Dfunctions_library_EXPORTS -I/home/christoph/Documents/SYSPROG/RingBuffer/include -g -fPIC -o CMakeFiles/functions_library.dir/src/ringbuffer.c.o -c /home/christoph/Documents/SYSPROG/RingBuffer/src/ringbuffer.c",
+  "file": "/home/christoph/Documents/SYSPROG/RingBuffer/src/ringbuffer.c"
 }
 ]
