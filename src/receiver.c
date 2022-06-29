@@ -6,11 +6,15 @@
 int main(int argc, char **argv){
     struct ringBuffer myRingBuff={0};
 
-int buffsize = strtod(argv[1],NULL);
+int buffsize = strtod(argv[1],NULL); //Strtod for buffsize, returns 0 on failure
+if(buffsize<=0){
+    printf("incorrect call of function\nTry \"./receiver <buffersize>\"");
+    return EXIT_FAILURE;
+}
 
 int blockID;
 
-//remove potential old semaphores
+
 
 
 //set semaphores for this process
@@ -25,7 +29,7 @@ if(myRingBuff.tools.read == SEM_FAILED){
     return(EXIT_FAILURE);
 }
 
-
+//access shared mem
 myRingBuff.buffer = getadressSpace("sharedMem",buffsize,&blockID);
 
 if(myRingBuff.buffer==NULL){
@@ -33,11 +37,13 @@ if(myRingBuff.buffer==NULL){
 return 1;
 }
 
+//read look
 while(1){
+
 
 int readIndex =myRingBuff.tools.readPos%buffsize;
     
-   
+   //Wait for write process to start
     if(sem_wait(myRingBuff.tools.written)!=0){
         perror("sem_wait_written");
     }
@@ -45,6 +51,8 @@ int readIndex =myRingBuff.tools.readPos%buffsize;
 
 if((int)myRingBuff.buffer[readIndex]==EOF){
     myRingBuff.tools.readPos++;
+
+    //increase to allow
 sem_post(myRingBuff.tools.read);
         break;
     }

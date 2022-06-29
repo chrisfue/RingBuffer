@@ -10,8 +10,13 @@ int blockID;
 
 //buffersize from arguments:
 
-int buffsize= strtod(argv[1],NULL);
-printf("%d",buffsize);
+int buffsize= strtod(argv[1],NULL); //strtod for buffsize, returns 0 on failure
+if(buffsize<=0){
+    printf("incorrect call of function\nTry \"./receiver <buffersize>\"");
+    return EXIT_FAILURE;
+}
+
+printf("Please enter text to write to Ringbuffer\n exit with CTRL+D");
 
 //create ringbuffer
 struct ringBuffer myRingBuff={0};
@@ -42,21 +47,25 @@ return 1;
 
 //set up writing process:
 char temp;
-int i=0;
+
 
 while(1){
-    
+  int writeIndex= myRingBuff.tools.writePos%buffsize;
 //take over char
     temp=fgetc(stdin);
 
+
+//write to buffer (writer always has to start)
+    myRingBuff.buffer[writeIndex]=temp;
     
-    //increment Semaphore
+    //increment Semaphore, so other process is not blocked by sem_wait and can read the entered char
 if(sem_post(myRingBuff.tools.written)!=0){
     perror("sem_post");
 }
+//Condition for finishing
 if(temp==EOF){
     //write to Buffer
-myRingBuff.buffer[myRingBuff.tools.writePos%buffsize]=temp;
+//myRingBuff.buffer[writeIndex]=temp;
 
 //increment write index
 myRingBuff.tools.writePos++;
@@ -71,13 +80,15 @@ myRingBuff.tools.writePos++;
     }
 
 //write to Buffer
-myRingBuff.buffer[myRingBuff.tools.writePos%buffsize]=temp;
+//myRingBuff.buffer[myRingBuff.tools.writePos%buffsize]=temp;
 
 //increment write index
 myRingBuff.tools.writePos++;
 
-
-sem_wait(myRingBuff.tools.read);
+//Wait for other process to continue
+if(sem_wait(myRingBuff.tools.read)!=0){
+        perror("sem_wait_read");
+    }
 
 }
 
