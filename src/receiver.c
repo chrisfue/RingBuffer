@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <ringbuffer.h>
 
-#define BUFFSIZE 20
 
-int main(int argc, char **Argv){
+
+int main(int argc, char **argv){
     struct ringBuffer myRingBuff={0};
 
+int buffsize = strtod(argv[1],NULL);
+
+int blockID;
 
 //remove potential old semaphores
-sem_unlink("written");
-sem_unlink("read");
 
 
 //set semaphores for this process
@@ -25,7 +26,7 @@ if(myRingBuff.tools.read == SEM_FAILED){
 }
 
 
-myRingBuff.buffer = getadressSpace("sharedMem",BUFFSIZE);
+myRingBuff.buffer = getadressSpace("sharedMem",buffsize,&blockID);
 
 if(myRingBuff.buffer==NULL){
     printf("Error at assigning block");
@@ -33,7 +34,29 @@ return 1;
 }
 
 while(1){
-printf("%s",myRingBuff.buffer);
+
+int readIndex =myRingBuff.tools.readPos%buffsize;
+    
+   
+    if(sem_wait(myRingBuff.tools.written)!=0){
+        perror("sem_wait_written");
+    }
+    
+
+if((int)myRingBuff.buffer[readIndex]==EOF){
+    myRingBuff.tools.readPos++;
+sem_post(myRingBuff.tools.read);
+        break;
+    }
+    
+printf("%c",myRingBuff.buffer[readIndex]);
+myRingBuff.tools.readPos++;
+sem_post(myRingBuff.tools.read);
+
+
 }
+
+sem_unlink("/written");
+sem_unlink("/read");
 
 }

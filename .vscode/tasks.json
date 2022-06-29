@@ -9,6 +9,7 @@
                 "-g",
                 "${file}",
                 "-o",
+                "Ihome/christoph/Documents/SYSPROG/RingBuffer/include",
                 "${fileDirname}/${fileBasenameNoExtension}",
                 
             ],

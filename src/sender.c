@@ -5,6 +5,9 @@
 
 int main(int argc, char **argv){
 
+
+int blockID;
+
 //buffersize from arguments:
 
 int buffsize= strtod(argv[1],NULL);
@@ -12,10 +15,6 @@ printf("%d",buffsize);
 
 //create ringbuffer
 struct ringBuffer myRingBuff={0};
-
-//remove potential old semaphores
-sem_unlink("written");
-sem_unlink("read");
 
 
 //set semaphores for this process
@@ -34,7 +33,7 @@ if(myRingBuff.tools.read == SEM_FAILED){
 
 
 //set shared memory
-myRingBuff.buffer = getadressSpace("sharedMem",buffsize);
+myRingBuff.buffer = getadressSpace("sharedMem",buffsize,&blockID);
 
 if(myRingBuff.buffer==NULL){
     printf("Error at assigning block");
@@ -45,17 +44,49 @@ return 1;
 char temp;
 int i=0;
 
-while(temp=getc(stdin)!=EOF){
+while(1){
+    
+//take over char
+    temp=fgetc(stdin);
+
+    
     //increment Semaphore
-sem_post(myRingBuff.tools.written);
+if(sem_post(myRingBuff.tools.written)!=0){
+    perror("sem_post");
+}
+if(temp==EOF){
+    //write to Buffer
+myRingBuff.buffer[myRingBuff.tools.writePos%buffsize]=temp;
+
+//increment write index
+myRingBuff.tools.writePos++;
+        
+    //decrement Semaphore    
+    if(sem_wait(myRingBuff.tools.read)!=0){
+        perror("sem_wait_read");
+    }
+        break;
+
+        
+    }
 
 //write to Buffer
-myRingBuff.buffer[i%buffsize]=temp;
+myRingBuff.buffer[myRingBuff.tools.writePos%buffsize]=temp;
 
 //increment write index
 myRingBuff.tools.writePos++;
 
+
+sem_wait(myRingBuff.tools.read);
+
 }
+
+
+
+//}
+//printf("%s", myRingBuff.buffer);
+//shmctl(blockID,IPC_RMID,NULL);
+
 
 
 

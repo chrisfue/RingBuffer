@@ -1,6 +1,10 @@
+
 {
-    "C_Cpp.errorSquiggles": "Disabled",
-    "files.associations": {
-        "unistd.h": "c"
+    "cmake.debugConfig": {
+        "args": [
+            "20",
+            "<testfile"
+            
+        ]
     }
 }
