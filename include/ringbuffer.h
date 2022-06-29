@@ -13,10 +13,10 @@
 
 struct ringbufferTools
 {
-    sem_t mutex;
+    
 
-    sem_t *written;
-    sem_t  *read;
+    sem_t *written; //write semaphore, sem_post after writing
+    sem_t  *read;   //read semaphore, sem_post after reading
 
     off_t readPos;  // current position of reading
     off_t writePos; // current position of writing
